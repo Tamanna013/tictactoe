@@ -3,14 +3,12 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 :root {
     --orange: #F2C14E;
     --winning-blocks: #2d414b;
     --background-dark: #37505C;
     --text-light: #F2C14E;
 }
-
 body {
     font-family: 'Finger Paint', cursive;
     color: var(--text-light);
@@ -19,8 +17,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
-
 .container {
     text-align: center;
     padding: 40px;
@@ -29,14 +27,14 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: 600px;
 }
-
 h1 {
     text-transform: uppercase;
     font-size: 54px;
     margin-bottom: 20px;
+    word-wrap: break-word;
 }
-
 button {
     padding: 10px 20px;
     font-size: 18px;
@@ -48,23 +46,30 @@ button {
     transition: transform 200ms ease-in-out;
     margin-top: 20px;
 }
-
 button:hover {
     cursor: pointer;
     transform: translateY(-2px);
 }
-
 .hidden {
     display: none;
 }
-
 #gameboard {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     gap: 10px;
     margin-top: 40px;
 }
-
+#nameInputArea {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#nameInputArea input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+}
 .box {
     width: 100px;
     height: 100px;
@@ -85,4 +90,45 @@ button:hover {
 .box.winning {
     background-color: var(--winning-blocks);
     color: white;
+}
+#nameInputArea {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.box.winning {
+    background-color: var(--winning-blocks);
+    color: white;
+}
+#nameInputArea input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+}
+#confettiCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    pointer-events: none;
+    display: none;
+}
+@media (max-width: 600px) {
+    h1 {
+        font-size: 36px;
+    }
+    #gameboard {
+        grid-template-columns: repeat(3, 80px);
+    }
+    .box {
+        width: 80px;
+        height: 80px;
+        font-size: 100px;
+    }
+    #nameInputArea input {
+        width: 150px;
+    }
 }

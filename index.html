@@ -11,7 +11,13 @@
 <body>
     <div class="container">
         <h1 id="playerText">Tic Tac Toe</h1>
-        <button id="startGameBtn">Start Game</button>
+        <div id="nameInputArea">
+            <label for="player1Name">Player 1 (X):</label>
+            <input type="text" id="player1Name" placeholder="Player 1's name"><br>
+            <label for="player2Name">Player 2 (O):</label>
+            <input type="text" id="player2Name" placeholder="Player 2's name"><br>
+            <button id="setNamesBtn">Start Game</button>
+        </div>
         <div id="gameArea" class="hidden">
             <button id="clearBoardBtn">Clear board</button>
             <div id="gameboard">
@@ -26,10 +32,7 @@
                 <div class="box" id="8"></div>
             </div>
         </div>
-    </div>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+        <canvas id="confettiCanvas" class="hidden"></canvas>
+    </div>      
 </body>
 </html>
