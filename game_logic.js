@@ -51,7 +51,7 @@ function boxClicked(e) {
         spaces[id] = currentPlayer;
         e.target.innerText = currentPlayer;
 
-        if (playerHasWon() !== false) {
+        if (playerHasWon()) {
             const winning_blocks = playerHasWon();
             playerText.innerHTML = `${currentPlayer === X_TEXT ? player1Name : player2Name} has won!`;
 
