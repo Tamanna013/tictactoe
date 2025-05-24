@@ -1,3 +1,4 @@
+// DOM Elements
 let playerText = document.getElementById('playerText');
 let restartBtn = document.getElementById('clearBoardBtn');
 let startGameBtn = document.getElementById('startGameBtn');
@@ -10,8 +11,10 @@ let nameInputArea = document.getElementById('nameInputArea');
 let confettiCanvas = document.getElementById('confettiCanvas');
 let confettiCtx = confettiCanvas.getContext('2d');
 
+// This gets a custom CSS variable --winning-blocks for the background color of winning cells.
 let winnerIndicator = getComputedStyle(document.body).getPropertyValue('--winning-blocks');
 
+// Initialization
 const O_TEXT = "O";
 const X_TEXT = "X";
 let currentPlayer = X_TEXT;
@@ -19,6 +22,7 @@ let spaces = Array(9).fill(null);
 let player1Name = "Player 1";
 let player2Name = "Player 2";
 
+// Setting player names:
 setNamesBtn.addEventListener('click', () => {
     player1Name = player1NameInput.value || player1Name;
     player2Name = player2NameInput.value || player2Name;
@@ -28,10 +32,18 @@ setNamesBtn.addEventListener('click', () => {
     playerText.innerHTML = `${player1Name}'s Turn (X)`;
 });
 
+// Start game:
 const startGame = () => {
     boxes.forEach(box => box.addEventListener('click', boxClicked));
 };
 
+// When a box is clicked: 
+// Check if it’s empty.
+// Fill it with the current player’s symbol.
+// Check if that move caused a win:
+// If yes, highlight the winning boxes and show a winner message.
+// If it's a tie (all boxes filled), show a tie message.
+// If the game isn’t over, switch to the next player.
 function boxClicked(e) {
     const id = e.target.id;
 
@@ -59,6 +71,7 @@ function boxClicked(e) {
     }
 }
 
+// Winning combinations
 const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -70,6 +83,7 @@ const winningCombos = [
     [2, 4, 6]
 ];
 
+// This function checks if the current player has filled any winning combination of boxes. If yes, it returns the winning indexes.
 function playerHasWon() {
     for (const condition of winningCombos) {
         let [a, b, c] = condition;
@@ -81,6 +95,7 @@ function playerHasWon() {
     return false;
 }
 
+// Confetti
 function triggerConfetti() {
     confettiCanvas.style.display = 'block';
     confettiCanvas.width = window.innerWidth;
